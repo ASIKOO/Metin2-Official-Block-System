@@ -43,9 +43,8 @@ bool MessengerManager::CheckMessengerList(std::string ch, std::string tch, BYTE 
 	if (!msg->Get()->uiNumRows)
 		return false;
 	
-	for (auto i = 0; i < (int)msg->Get()->uiNumRows; ++i) {
+	for (int i = 0; i < (int)msg->Get()->uiNumRows; ++i) {
 		MYSQL_ROW row = mysql_fetch_row(msg->Get()->pSQLResult);
-		for (int i = 0; i < 2; i++)
 		if ((row[0] == ch and row[1] == tch) or (row[1] == ch and row[0] == tch))
 			return true;
 	}
